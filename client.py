@@ -8,14 +8,16 @@ from classes.ghoul_catchers import GhoulCatchers
 from classes.shop_of_offers import shop_of_offers
 from classes.trudys_surprise import trudys_surprise
 from classes.giant_jelly import giant_jelly
+from classes.kacheek_seek import kacheekseek
 
 class client:
     def __init__(self, username, password, proxy, pin):
         self.wrapper = wrapper(username, password, proxy)
-        self.ghoul_catchers = GhoulCatchers(username, password, proxy)
-        self.shop_of_offers = shop_of_offers(self.wrapper, username)
-        self.trudys_surprise = trudys_surprise(self.wrapper)
-        self.giant_jelly = giant_jelly(self.wrapper)
+        self.ghoul_catchers = GhoulCatchers(username, password, proxy, functions)
+        self.shop_of_offers = shop_of_offers(self.wrapper, functions, username)
+        self.trudys_surprise = trudys_surprise(self.wrapper, functions, username)
+        self.giant_jelly = giant_jelly(self.wrapper, functions, username)
+        self.kacheek_seek = kacheekseek(self.wrapper, functions, username)
         self.functions = functions()
         self.username = username
 
@@ -32,7 +34,6 @@ class client:
 
     def visit_shop_of_offers(self):
         if int(time.time()) - self.functions.get_last_run(self.username, "shop of offers") >= 86400:
-            self.ensure_login()
             neopoints_before = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
             self.shop_of_offers.visit_shop_of_offers()
             neopoints_after = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
@@ -42,7 +43,6 @@ class client:
 
     def play_trudys_surprise(self):
         if int(time.time()) - self.functions.get_last_run(self.username, "trudys surprise") >= 86400:
-            self.ensure_login()
             neopoints_before = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
             self.trudys_surprise.play_trudys_surprise()
             neopoints_after = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
@@ -52,7 +52,6 @@ class client:
 
     def visit_giant_jelly(self):
         if int(time.time()) - self.functions.get_last_run(self.username, "giant jelly") >= 86400:
-            self.ensure_login()
             jelly = self.giant_jelly.grab_jelly()
             if jelly:
                 self.functions.update_items_gained(self.username, "giant jelly", jelly)
@@ -60,18 +59,24 @@ class client:
             else:
                 self.functions.update_last_run(self.username, "giant jelly")
 
-    def ensure_login(self):
-        return self.wrapper.login()
+    def play_kacheek_seek(self):
+        if int(time.time()) - self.functions.get_last_run(self.username, "kacheek seek") >= 86400:
+            neopoints_before = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
+            self.kacheek_seek.seek()
+            neopoints_after = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
+            neopoints_earned = neopoints_after - neopoints_before
+            self.functions.update_neopoints_gained(self.username, "kacheek seek", neopoints_earned)
+            self.functions.update_last_run(self.username, "kacheek seek")
 
     def initiate_program(self):
-        self.wrapper.login()
-        while True:
-            with open("tasks/tasks.json", "r") as f:
-                tasks = json.load(f)
-            for task in tasks:
-                if tasks[task]["status"] == "on":
-                    exec(f"self.{tasks[task]['code']}()")
-            time.sleep(random.uniform(60, 300))
+        if self.wrapper.login():
+            while True:
+                with open("tasks/tasks.json", "r") as f:
+                    tasks = json.load(f)
+                for task in tasks:
+                    if tasks[task]["status"] == "on":
+                        exec(f"self.{tasks[task]['code']}()")
+                time.sleep(random.uniform(60, 300))
 
 if __name__ == "__main__":
     account = functions().get_account_total()
@@ -79,7 +84,6 @@ if __name__ == "__main__":
     for i in range(len(account)):
         username, password, proxy, pin = functions().pull_account(account[i])
         thread = threading.Thread(target=client(username, password, proxy, pin).initiate_program)
-        thread.daemon = True
         threads.append(thread)
     for i in range(len(account)):
         threads[i].start()
