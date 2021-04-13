@@ -1,0 +1,21 @@
+{
+    "ghoul catchers": {
+        "status": "on",
+        "code": "play_ghoul_catchers"
+    },
+
+    "shop of offers": {
+        "status": "on",
+        "code": "visit_shop_of_offers"
+    },
+
+    "trudys surprise": {
+        "status": "on",
+        "code": "play_trudys_surprise"
+    },
+
+    "giant jelly": {
+        "status": "on",
+        "code": "visit_giant_jelly"
+    }
+}
