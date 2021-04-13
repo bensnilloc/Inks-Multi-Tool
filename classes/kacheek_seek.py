@@ -1,9 +1,8 @@
 import time
 import random
-from classes.functions import functions
 
 class kacheekseek:
-    def __init__(self, wrapper, username):
+    def __init__(self, wrapper, functions, username):
         self.wrapper = wrapper
         self.functions = functions()
         self.username = username
