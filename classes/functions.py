@@ -67,11 +67,7 @@ class functions:
             f.truncate()
 
     def get_neopoints_on_hand(self, response):
-        try:
-            neopoints = self.get_between(response, "npanchor\" class=\"np-text__2020\">", "</span>")
-        except:
-            with open("s.html", "w", encoding="utf-8") as f:
-                f.write(response)
+        neopoints = self.get_between(response, "npanchor\" class=\"np-text__2020\">", "</span>")
         if self.contains(neopoints, ","):
             neopoints = neopoints.replace(",", "")
         return int(neopoints)
