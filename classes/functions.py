@@ -33,7 +33,7 @@ class functions:
     def create_data_file(self, username):
         if not os.path.exists(f"data/{username}.json"):
             with open(f"data/{username}.json", "w") as f:
-                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0}}, f, indent=4)
+                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0},"kacheek seek": {"neopoints gained": 0,"last run": 0}}, f, indent=4)
 
     def update_last_run(self, username, task):
         with open(f"data/{username}.json", "r+") as f:
@@ -67,7 +67,11 @@ class functions:
             f.truncate()
 
     def get_neopoints_on_hand(self, response):
-        neopoints = self.get_between(response, "npanchor\" class=\"np-text__2020\">", "</span>")
+        try:
+            neopoints = self.get_between(response, "npanchor\" class=\"np-text__2020\">", "</span>")
+        except:
+            with open("s.html", "w", encoding="utf-8") as f:
+                f.write(response)
         if self.contains(neopoints, ","):
             neopoints = neopoints.replace(",", "")
         return int(neopoints)
@@ -86,3 +90,6 @@ class functions:
         for account in data:
             accounts.append(account)
         return accounts
+
+    def ensure_login(self, response):
+        return True if "npanchor" in response else False
