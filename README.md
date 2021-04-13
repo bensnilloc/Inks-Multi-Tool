@@ -26,18 +26,21 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - [x] Trudy's Surprise Auto Player
 - [x] Giant Jelly Visitor
 - [x] Shop of Offers Visitor
+- [x] Kacheek Seek Auto Player
 
 # Tasks Breakdown
 - Ghoul Catchers: Runs once every 24 hours, this task will play Ghoul Catchers for you until you reach your 50,000 Neopoint threshold.
 - Trudy's Surprise: Runs once every 24 hours, this task will play Trudy's Surprise for you each day so you'll never forget to do so.
 - Giant Jelly Visitor: Runs once every 24 hours, this task will take a piece of the Giant Jelly each day
 - Shop of Offers Visitor: Runs once every 24 hours, this task will visit the Shop of Offers each day
+- Kacheek Seek: Runs once every 24 hours, this task will play kacheek seek until your pet is bored
 
 # Estimated Monthly Earnings
 - Ghoul Catchers: 1,500,000 Neopoints
 - Trudy's Surprise: 400,000 Neopoints, x4 random 7-day-streak items
 - Giant Jelly: x30 random jellies
 - Shop of Offers: 1,500 - 3,000 Neopoints
+- Kacheek Seek: 6000 - 10500
 
 # Total Estimated Monthly Earnings
-<b>1,901,500 - 1,903,000 Neopoints</b>
+<b>1,907,500 - 1,913,500 Neopoints</b>
