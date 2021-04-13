@@ -15,5 +15,7 @@ class trudys_surprise:
             response = self.wrapper.get(f"trudydaily/{trudy_daily}", referer=response.url)
             key = urllib.parse.unquote(self.functions.get_between(response.text, "'key': '", "'};"))
             self.wrapper.post("trudydaily/ajax/claimprize.php", data={"action": "getslotstate", "key": key}, referer="http://www.neopets.com/trudys_surprise.phtml")
+            time.sleep(random.uniform(10, 35))
             self.wrapper.post("trudydaily/ajax/claimprize.php", data={"action": "beginroll"}, referer="http://www.neopets.com/trudys_surprise.phtml")
+            time.sleep(random.uniform(20, 60))
             self.wrapper.post("trudydaily/ajax/claimprize.php", data={"action": "prizeclaimed"}, referer="http://www.neopets.com/trudys_surprise.phtml")
