@@ -7,10 +7,9 @@ import json
 import threading
 from hashlib import md5
 from pyDes import triple_des, PAD_PKCS5
-from classes.functions import functions
 
 class GhoulCatchers:
-    def __init__(self, username, password, proxy):
+    def __init__(self, username, password, proxy, functions):
         self.session = requests.Session()
         self.functions = functions()
         self.crypto = Encryption()
@@ -44,7 +43,7 @@ class GhoulCatchers:
             if "<LoginStatus>Success" in decrypted_data:
                 self.api_token = self.functions.get_between(decrypted_data, "<ApiToken>", "</ApiToken>")
                 self.user_id = self.functions.get_between(decrypted_data, "<UserID>", "</UserID>")
-                print(f"[+] Successfully logged in as {self.username}")
+                print(f"[{self.username}] Ghoul Catchers: Successfully logged in as {self.username}")
 
     def login_child(self):
         ticks, child_id = self.get_ticks(), self.crypto.encrypt_data(self.user_id)
@@ -62,7 +61,7 @@ class GhoulCatchers:
             response = self.session.post(self.url("Achievement/AchievementWebService.asmx/ApplyPayout"), data=data)
             if "AchievementReward" in response.text:
                 delay = random.uniform(100, 250)
-                print(f"[+] Score sent successfully {_[0]}/50 - sleeping for {int(delay)} seconds..")
+                print(f"[{self.username}] Ghoul Catchers: Score sent successfully {_[0]}/50 - sleeping for {int(delay)} seconds..")
                 time.sleep(delay)
 
 class Encryption:

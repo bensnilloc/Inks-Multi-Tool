@@ -1,15 +1,17 @@
 import urllib.parse
 import time
 import random
-from classes.functions import functions
 
 class trudys_surprise:
-    def __init__(self, wrapper):
+    def __init__(self, wrapper, functions, username):
         self.wrapper = wrapper
         self.functions = functions()
+        self.username = username
 
     def play_trudys_surprise(self):
         response = self.wrapper.get("trudys_surprise.phtml", referer="https://thedailyneopets.com/dailies")
+        if not self.functions.ensure_login(response.text):
+            self.wrapper.login()
         if self.functions.contains(response.text, "&slt=1"):
             trudy_daily = self.functions.get_between(response.text, "src=\"/trudydaily/", "\" name")
             response = self.wrapper.get(f"trudydaily/{trudy_daily}", referer=response.url)
