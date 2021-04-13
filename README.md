@@ -9,7 +9,7 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 <br>
 <code>pip install pyDes</code><br><br>
 
-<b>Linux/Mac OS</b><br><br>
+<b>Linux/Mac OS</b><br>
 <code>pip3 install requests</code>
 <br>
 <code>pip3 install pyDes</code>
