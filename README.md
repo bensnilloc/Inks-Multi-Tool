@@ -3,9 +3,23 @@ The goal of this project is to make neopets automation available to everyone and
 Inks Multi Tool uses multi-threading to allow you to run as many accounts concurrently as you would like. Because of this, proxy support has also been included to keep you as safe as humanly possible. Each task that Inks Multi Tool automates for you is first done manually by a human to find out the safest (randomized) delays between each action. If you can't clear a stage of Ghoul Catchers within less than a second, then why should a program be able to do that. It doesn't make sense, does it?
 
 # Requirements
+<b>You will need [Python 3](https://www.python.org/downloads/) to execute this program</b><br><br>
+<b>Windows</b><br>
 <code>pip install requests</code>
 <br>
-<code>pip install pyDes</code>
+<code>pip install pyDes</code><br><br>
+
+<b>Linux/Mac OS</b><br><br>
+<code>pip3 install requests</code>
+<br>
+<code>pip3 install pyDes</code>
+
+# How to use the program
+<b>Please ensure you're in the same directory as the program before running the commands</b><br><br>
+<b>Windows</b><br>
+<code>python client.py</code><br><br>
+<b>Linux/Mac OS</b><br>
+<code>python3 client.py</code>
 
 # Automation Tasks
 - [x] Ghoul Catchers Auto Player
