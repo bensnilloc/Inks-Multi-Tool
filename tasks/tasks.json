@@ -17,5 +17,10 @@
     "giant jelly": {
         "status": "on",
         "code": "visit_giant_jelly"
+    },
+
+    "kacheek seek": {
+        "status": "on",
+        "code": "play_kacheek_seek"
     }
 }
