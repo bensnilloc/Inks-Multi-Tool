@@ -2,6 +2,7 @@ import time
 import random
 import json
 import os
+import re
 
 class functions:
     def contains(self, data, string):
@@ -33,7 +34,7 @@ class functions:
     def create_data_file(self, username):
         if not os.path.exists(f"data/{username}.json"):
             with open(f"data/{username}.json", "w") as f:
-                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0},"kacheek seek": {"neopoints gained": 0,"last run": 0}}, f, indent=4)
+                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0},"kacheek seek": {"neopoints gained": 0,"last run": 0},"potato counter": {"neopoints gained": 0,"last run": 0}}, f, indent=4)
 
     def update_last_run(self, username, task):
         with open(f"data/{username}.json", "r+") as f:
@@ -88,4 +89,4 @@ class functions:
         return accounts
 
     def ensure_login(self, response):
-        return True if "npanchor" in response else False
+        return False if "login-form" in response else True
