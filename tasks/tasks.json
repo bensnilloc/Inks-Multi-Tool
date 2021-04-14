@@ -22,5 +22,10 @@
     "kacheek seek": {
         "status": "on",
         "code": "play_kacheek_seek"
+    },
+
+    "potato counter": {
+        "status": "on",
+        "code": "play_potato_counter"
     }
 }
