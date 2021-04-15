@@ -27,7 +27,9 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - [x] Giant Jelly Visitor
 - [x] Shop of Offers Visitor
 - [x] Kacheek Seek Auto Player
-- [x] Potato Counter Auto Player 
+- [x] Potato Counter Auto Player
+- [x] Obsidian Quarry Auto Grabber
+- [x] Lottery Auto Player 
 
 # Tasks Breakdown
 - Ghoul Catchers: Runs once every 24 hours, this task will play Ghoul Catchers for you until you reach your 50,000 Neopoint threshold.
@@ -36,14 +38,18 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - Shop of Offers Visitor: Runs once every 24 hours, this task will visit the Shop of Offers each day.
 - Kacheek Seek: Runs once every 24 hours, this task will play kacheek seek until your pet is bored.
 - Potato Counter: Runs once every 24 hours, this task will play potato counter until you've used all of your daily guesses.
+- Obsidian Quarry: Runs once every 24 hours, this task will visit the Obsidian Quarry once per day.
+- Lottery: Runs once every 24 hours, this task will purchase 20 tickets at the lottery for you every day.
 
 # Estimated Monthly Earnings
 - Ghoul Catchers: 1,500,000 Neopoints
 - Trudy's Surprise: 400,000 Neopoints, x4 random 7-day-streak items
 - Giant Jelly: x30 random jellies
 - Shop of Offers: 1,500 - 3,000 Neopoints
-- Kacheek Seek: 6,000 - 10,500
-- Potato Counter: 4,500 - 6,750
+- Kacheek Seek: 6,000 - 10,500 Neopoints
+- Potato Counter: 4,500 - 6,750 Neopoints
+- Obsidian Quarry: x30 Shiny Obsidians
+- Lottery: -60,000 Neopoints
 
 # Total Estimated Monthly Earnings
-<b>1,912,000 - 1,920,250 Neopoints</b>
+<b>1,852,000 - 1,860,250 Neopoints</b>
