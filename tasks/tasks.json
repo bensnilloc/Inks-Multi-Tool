@@ -27,5 +27,15 @@
     "potato counter": {
         "status": "on",
         "code": "play_potato_counter"
+    },
+
+    "obsidian quarry": {
+        "status": "on",
+        "code": "visit_obsidian_quarry"
+    },
+
+    "lottery": {
+        "status": "on",
+        "code": "play_lottery"
     }
 }
