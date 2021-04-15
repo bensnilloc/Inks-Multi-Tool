@@ -10,6 +10,8 @@ from classes.trudys_surprise import trudys_surprise
 from classes.giant_jelly import giant_jelly
 from classes.kacheek_seek import kacheekseek
 from classes.potato_counter import potato_counter
+from classes.obsidian_quarry import obsidian_quarry
+from classes.lottery import lottery
 
 class client:
     def __init__(self, username, password, proxy, pin):
@@ -20,6 +22,8 @@ class client:
         self.giant_jelly = giant_jelly(self.wrapper, functions, username)
         self.kacheek_seek = kacheekseek(self.wrapper, functions, username)
         self.potato_counter = potato_counter(self.wrapper, functions, username)
+        self.obsidian_quarry = obsidian_quarry(self.wrapper, functions, username)
+        self.lottery = lottery(self.wrapper, functions, username)
         self.functions = functions()
         self.username = username
 
@@ -78,6 +82,22 @@ class client:
             neopoints_earned = neopoints_after - neopoints_before
             self.functions.update_neopoints_gained(self.username, "potato counter", neopoints_earned)
             self.functions.update_last_run(self.username, "potato counter")
+
+    def visit_obsidian_quarry(self):
+        if int(time.time()) - self.functions.get_last_run(self.username, "obsidian quarry") >= 86400:
+            obsidian_quarry = self.obsidian_quarry.visit_obsidian_quarry()
+            if obsidian_quarry:
+                self.functions.update_items_gained(self.username, "obsidian quarry", "Shiny Obsidian")
+                self.functions.update_last_run(self.username, "obsidian quarry")
+            else:
+                self.functions.update_last_run(self.username, "obsidian quarry")
+
+    def play_lottery(self):
+        if int(time.time()) - self.functions.get_last_run(self.username, "lottery") >= 86400:
+            tickets_bought, neopoints_spent = self.lottery.play_lottery()
+            self.functions.update_tickets_bought(self.username, "lottery", tickets_bought)
+            self.functions.update_neopoints_spent(self.username, "lottery", neopoints_spent)
+            self.functions.update_last_run(self.username, "lottery")
 
     def initiate_program(self):
         if self.wrapper.login():
