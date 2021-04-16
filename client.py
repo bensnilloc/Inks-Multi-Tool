@@ -12,6 +12,7 @@ from classes.kacheek_seek import kacheekseek
 from classes.potato_counter import potato_counter
 from classes.obsidian_quarry import obsidian_quarry
 from classes.lottery import lottery
+from classes.stock_buyer import stock_buyer
 
 class client:
     def __init__(self, username, password, proxy, pin):
@@ -24,6 +25,7 @@ class client:
         self.potato_counter = potato_counter(self.wrapper, functions, username)
         self.obsidian_quarry = obsidian_quarry(self.wrapper, functions, username)
         self.lottery = lottery(self.wrapper, functions, username)
+        self.stock_buyer = stock_buyer(self.wrapper, functions, username)
         self.functions = functions()
         self.username = username
 
@@ -98,6 +100,16 @@ class client:
             self.functions.update_tickets_bought(self.username, "lottery", tickets_bought)
             self.functions.update_neopoints_spent(self.username, "lottery", neopoints_spent)
             self.functions.update_last_run(self.username, "lottery")
+
+    def buy_stocks(self):
+        if int(time.time()) - self.functions.get_last_run(self.username, "stocks") >= 86400:
+            neopoints_before = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
+            self.stock_buyer.buy_stocks()
+            neopoints_after = self.functions.get_neopoints_on_hand(self.wrapper.get("inventory.phtml").text)
+            neopoints_spent = neopoints_after - neopoints_before
+            self.functions.update_stocks_bought(self.username, "stocks")
+            self.functions.update_neopoints_spent(self.username, "stocks", neopoints_spent)
+            self.functions.update_last_run(self.username, "stocks")
 
     def initiate_program(self):
         if self.wrapper.login():
