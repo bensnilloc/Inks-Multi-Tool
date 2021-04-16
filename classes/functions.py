@@ -34,7 +34,7 @@ class functions:
     def create_data_file(self, username):
         if not os.path.exists(f"data/{username}.json"):
             with open(f"data/{username}.json", "w") as f:
-                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0},"kacheek seek": {"neopoints gained": 0,"last run": 0},"potato counter": {"neopoints gained": 0,"last run": 0},"obsidian quarry": {"items gained": "","last run": 0},"lottery": {"tickets bought": 0,"neopoints spent": 0,"last run": 0}}, f, indent=4)
+                json.dump({"ghoul catchers": {"neopoints gained": 0,"last run": 0},"shop of offers": {"neopoints gained": 0,"last run": 0},"trudys surprise": {"neopoints gained": 0,"last run": 0},"giant jelly": {"items gained": "","last run": 0},"kacheek seek": {"neopoints gained": 0,"last run": 0},"potato counter": {"neopoints gained": 0,"last run": 0},"obsidian quarry": {"items gained": "","last run": 0},"lottery": {"tickets bought": 0,"neopoints spent": 0,"last run": 0},"stocks": {"neopoints spent": 0,"shares bought": 0,"last run": 0}}, f, indent=4)
 
     def update_last_run(self, username, task):
         with open(f"data/{username}.json", "r+") as f:
@@ -83,6 +83,16 @@ class functions:
             current_neopoints_gained = data[task]["tickets bought"]
             current_neopoints_gained += tickets
             data[task]["tickets bought"] = current_neopoints_gained
+            f.seek(0)
+            json.dump(data, f, indent=4)
+            f.truncate()
+
+    def update_stocks_bought(self, username, task):
+        with open(f"data/{username}.json", "r+") as f:
+            data = json.load(f)
+            current_neopoints_gained = data[task]["shares bought"]
+            current_neopoints_gained += 1000
+            data[task]["shares bought"] = current_neopoints_gained
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
