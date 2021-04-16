@@ -37,5 +37,10 @@
     "lottery": {
         "status": "on",
         "code": "play_lottery"
+    },
+
+    "stocks": {
+        "status": "on",
+        "code": "buy_stocks"
     }
 }
