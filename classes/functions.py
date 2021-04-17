@@ -100,7 +100,7 @@ class functions:
     def update_avatar_received(self, username, task, avatar):
         with open(f"data/{username}.json", "r+") as f:
             data = json.load(f)
-            data[task]["avatar received"] = current_neopoints_gained
+            data[task]["avatar received"] = avatar
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
