@@ -42,5 +42,10 @@
     "stocks": {
         "status": "on",
         "code": "buy_stocks"
+    },
+
+    "buried treasure": {
+        "status": "on",
+        "code": "play_buried_treasure"
     }
 }
