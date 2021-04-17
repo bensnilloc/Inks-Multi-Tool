@@ -13,6 +13,7 @@ from classes.potato_counter import potato_counter
 from classes.obsidian_quarry import obsidian_quarry
 from classes.lottery import lottery
 from classes.stock_buyer import stock_buyer
+from classes.buried_treasure import buried_treasure
 
 class client:
     def __init__(self, username, password, proxy, pin):
@@ -26,6 +27,7 @@ class client:
         self.obsidian_quarry = obsidian_quarry(self.wrapper, functions, username)
         self.lottery = lottery(self.wrapper, functions, username)
         self.stock_buyer = stock_buyer(self.wrapper, functions, username)
+        self.buried_treasure = buried_treasure(self.wrapper, functions, username)
         self.functions = functions()
         self.username = username
 
@@ -110,6 +112,14 @@ class client:
             self.functions.update_stocks_bought(self.username, "stocks")
             self.functions.update_neopoints_spent(self.username, "stocks", neopoints_spent)
             self.functions.update_last_run(self.username, "stocks")
+
+    def play_buried_treasure(self):
+        if int(time.time()) - self.functions.get_last_run(self.username, "buried treasure") >= 10800:
+            is_avatar = self.buried_treasure.play_buried_treasure()
+            if is_avatar:
+                self.functions.update_avatar_received(self.username, "buried treasure", True)
+            self.functions.update_neopoints_spent(self.username, "buried treasure", 300)
+            self.functions.update_last_run(self.username, "buried treasure")
 
     def initiate_program(self):
         if self.wrapper.login():
