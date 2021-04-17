@@ -30,7 +30,8 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - [x] Potato Counter Auto Player
 - [x] Obsidian Quarry Auto Grabber
 - [x] Lottery Auto Player
-- [x] Stocks Auto Buyer 
+- [x] Stocks Auto Buyer
+- [x] Buried Treasure Auto Player 
 
 # Tasks Breakdown
 - Ghoul Catchers: Runs once every 24 hours, this task will play Ghoul Catchers for you until you reach your 50,000 Neopoint threshold.
@@ -42,6 +43,7 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - Obsidian Quarry: Runs once every 24 hours, this task will visit the Obsidian Quarry once per day.
 - Lottery: Runs once every 24 hours, this task will purchase 20 tickets at the lottery for you every day.
 - Stocks: Runs once every 24 hours, this task will purchase 1,000 stocks valued at 15NP - 18NP every day.
+- Buried Treasure: Runs once every 3 hours, this task will play & pick random coordinates in Buried Treasure
 
 # Estimated Monthly Earnings
 - Ghoul Catchers: 1,500,000 Neopoints
@@ -53,6 +55,7 @@ Inks Multi Tool uses multi-threading to allow you to run as many accounts concur
 - Obsidian Quarry: x30 Shiny Obsidians
 - Lottery: -60,000 Neopoints
 - Stocks: -450,000 Neopoints
+- Buried Treasure: -72,000 Neopoints
 
 # Total Estimated Monthly Earnings
-<b>1,452,000 - 1,460,250 Neopoints</b>
+<b>1,380,000 - 1,388,250 Neopoints</b>
